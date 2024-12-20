@@ -149,7 +149,7 @@
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 50 50"
                                         width="50px"
-                                        style="width: 25px; height: auto; margin-right: 15px;"
+                                        style="width: 40px; height: auto; margin-right: 15px;"
                                         fill="#fff"
                                         height="50px"
                                       >
@@ -162,6 +162,8 @@
                                         viewBox="0 0 30 30"
                                         width="30px"
                                         fill="#fff"
+                                        style="width: 42px; height: auto;"
+
 
                                         height="30px"
                                       >
@@ -179,7 +181,7 @@
 
                     <div class="banner__right">
                         <div class="image">
-                            <img src="assets/images/layouts/banner.png" alt="">
+                            <img style="transition: all .3s ease-in-out;" id="_hero-image" src="assets/images/layouts/banner.png" alt="">
                         </div>
 
                         <!-- <div class="price">
@@ -380,6 +382,7 @@
 
 
 
+   
 
 
 
@@ -1509,7 +1512,43 @@
     
     </div>
     
-    
+    <script>
+        // Array of image sources
+const images = [
+  'assets/images/layouts/banner.png',
+  'assets/images/layouts/about-02.png',
+  'assets/images/layouts/about-03.png',
+  'assets/images/layouts/about-04.png',
+  'assets/images/layouts/about-05.png',
+  'assets/images/layouts/about-06.png',
+];
+
+// Get the image element
+const imageElement = document.getElementById('_hero-image');
+
+// Variable to keep track of the current image index
+let currentIndex = 0;
+
+// Function to change the image with animation
+function changeImage() {
+  // Fade out the current image
+  imageElement.style.opacity = .6;
+
+  // Wait for the opacity transition to complete (1s)
+  setTimeout(() => {
+    // Update the image source with the next image
+    currentIndex = (currentIndex + 1) % images.length;
+    imageElement.src = images[currentIndex];
+
+    // Fade the image back in
+    imageElement.style.opacity = 1;
+  }, 1000); // The delay should match the transition time (1 second)
+}
+
+// Change image every 3 seconds
+setInterval(changeImage, 3000);
+
+    </script>
 
 
 
@@ -1530,6 +1569,7 @@
       <script src="app/js/swiper.js"></script>
 
     <!-- Initialize Swiper -->
+
 
 
 </body>
